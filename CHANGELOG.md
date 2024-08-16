@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/Developerproject2024/app-marketplace-ui/compare/v0.0.3...v0.0.4) (2024-08-16)
+
+
+### Features
+
+* user registration form configuration ([0dcf68b](https://github.com/Developerproject2024/app-marketplace-ui/commit/0dcf68bc802e179e9f8a3c0217663a8fd7328b31))
+
 ### [0.0.3](https://github.com/Developerproject2024/app-marketplace-ui/compare/v0.0.2...v0.0.3) (2024-08-16)
 
 ### Features
