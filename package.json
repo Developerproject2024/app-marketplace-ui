@@ -44,6 +44,24 @@
     "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1"
   },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "rootDir": "src",
+    "testMatch": [
+      "**/__tests__/**/*.test.(ts|js)"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/$1"
+    }
+  },
   "lint-staged": {
     "*.js": [
       "prettier --write",
