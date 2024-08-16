@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/Developerproject2024/app-marketplace-ui/compare/v0.0.2...v0.0.3) (2024-08-16)
+
+
+### Features
+
+* inventory component is created, router is placed in layout and user module ([231c1f0](https://github.com/Developerproject2024/app-marketplace-ui/commit/231c1f07c744d900aa0d7054cc093b8ede0a28fe))
+* tag names are organized in the users registration form ([10e2747](https://github.com/Developerproject2024/app-marketplace-ui/commit/10e27475fe6ed9ad12af1c1ef40288db999797bb))
+
 ### [0.0.2](https://github.com/Developerproject2024/app-marketplace-ui/compare/v0.0.1...v0.0.2) (2024-08-16)
 
 ### Features
