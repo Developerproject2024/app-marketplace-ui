@@ -53,7 +53,7 @@ const SignUpForm = () => {
       {/* Campo de Email */}
       <div className="mb-4">
         <label htmlFor="email" className="block text-gray-700 font-bold mb-2">
-          Email
+          Correo
         </label>
         <input
           type="email"
@@ -68,7 +68,7 @@ const SignUpForm = () => {
       {/* Campo de Contraseña */}
       <div className="mb-4">
         <label htmlFor="password" className="block text-gray-700 font-bold mb-2">
-          Password
+          Contraseña
         </label>
         <input
           type="password"
@@ -83,7 +83,7 @@ const SignUpForm = () => {
       {/* Campo de Confirmar Contraseña */}
       <div className="mb-4">
         <label htmlFor="confirmPassword" className="block text-gray-700 font-bold mb-2">
-          Confirm Password
+          Confirmar contraseña
         </label>
         <input
           type="password"
