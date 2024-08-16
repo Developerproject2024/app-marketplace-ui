@@ -1,55 +1,65 @@
 import { useState } from 'react';
 
 const SignUpForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [errors, setErrors] = useState({ email: '', password: '', confirmPassword: '' });
+  const [errors, setErrors] = useState({ email: '', password_confirmation: '', password_new: '' });
+  const [formData, setFormData] = useState({
+    email: '',
+    password_new: '',
+    password_confirmation: '',
+  });
 
   const validateForm = () => {
     const newErrors = {
       email: '',
-      password: '',
-      confirmPassword: '',
+      password_new: '',
+      password_confirmation: '',
     };
 
     // Validar correo electrónico
-    if (!email) {
+    if (!formData.email) {
       newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'Email is invalid';
     }
 
     // Validar contraseña
-    if (!password) {
-      newErrors.password = 'Password is required';
-    } else if (password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters long';
+    if (!formData.password_new) {
+      newErrors.password_new = 'Password is required';
+    } else if (formData.password_new.length < 6) {
+      newErrors.password_new = 'Password must be at least 6 characters long';
     }
 
     // Validar confirmación de contraseña
-    if (!confirmPassword) {
-      newErrors.confirmPassword = 'Please confirm your password';
-    } else if (confirmPassword !== password) {
-      newErrors.confirmPassword = 'Passwords do not match';
+    if (!formData.password_confirmation) {
+      newErrors.password_confirmation = 'Please confirm your password';
+    } else if (formData.password_confirmation !== formData.password_new) {
+      newErrors.password_confirmation = 'Passwords do not match';
     }
 
     setErrors(newErrors);
 
-    // Devuelve true si no hay errores
-    return Object.keys(newErrors).length === 0;
+    return Object.values(newErrors).every((value) => value === '');
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+    console.log();
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
       // Lógica para enviar el formulario
-      console.log('Form submitted successfully!');
+      console.log('Form submitted successfully!', formData);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg">
+    <form onSubmit={handleSubmit} className="max-w-lg w-full mx-auto bg-white p-8 rounded-lg ">
       {/* Campo de Email */}
       <div className="mb-4">
         <label htmlFor="email" className="block text-gray-700 font-bold mb-2">
@@ -58,9 +68,10 @@ const SignUpForm = () => {
         <input
           type="email"
           id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className={`w-full px-3 py-2 border rounded-lg ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
+          name="email"
+          value={formData.email}
+          onChange={(e) => handleChange(e)}
+          className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
         />
         {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
       </div>
@@ -72,12 +83,13 @@ const SignUpForm = () => {
         </label>
         <input
           type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className={`w-full px-3 py-2 border rounded-lg ${errors.password ? 'border-red-500' : 'border-gray-300'}`}
+          id="password_new"
+          name="password_new"
+          value={formData.password_new}
+          onChange={(e) => handleChange(e)}
+          className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.password ? 'border-red-500' : 'border-gray-300'}`}
         />
-        {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
+        {errors.password_new && <p className="text-red-500 text-sm mt-1">{errors.password_new}</p>}
       </div>
 
       {/* Campo de Confirmar Contraseña */}
@@ -87,18 +99,23 @@ const SignUpForm = () => {
         </label>
         <input
           type="password"
-          id="confirmPassword"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          className={`w-full px-3 py-2 border rounded-lg ${errors.confirmPassword ? 'border-red-500' : 'border-gray-300'}`}
+          id="password_confirmation"
+          name="password_confirmation"
+          value={formData.password_confirmation}
+          onChange={(e) => handleChange(e)}
+          className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.confirmPassword ? 'border-red-500' : 'border-gray-300'}`}
         />
-        {errors.confirmPassword && <p className="text-red-500 text-sm mt-1">{errors.confirmPassword}</p>}
+        {errors.password_confirmation && <p className="text-red-500 text-sm mt-1">{errors.password_confirmation}</p>}
       </div>
 
-      {/* Botón de Enviar */}
-      <button type="submit" className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">
-        Sign Up
-      </button>
+      <div className="flex flex-col justify-center items-center mt-10">
+        <button type="submit" className="w-32 bg-gray-300 text-gray-500 py-2 px-4 rounded hover:bg-blue-700">
+          REGISTRARSE
+        </button>
+        <button type="submit" className="w-32  text-blue-400 py-2 px-4 rounded hover:bg-blue-700 mt-1">
+          Inicia sesión
+        </button>
+      </div>
     </form>
   );
 };
