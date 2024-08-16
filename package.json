@@ -9,7 +9,7 @@
     "lint": "eslint . --ext .ts,.tsx",
     "preview": "vite preview",
     "format": "prettier --write .",
-     "test": "jest",
+    "test": "jest",
     "prepare": "husky",
     "pre-commit": "npx lint-staged && npm run format && npm run test",
     "pre-push": "npm run release",
@@ -39,6 +39,7 @@
     "prettier": "^3.3.3",
     "standard-version": "^9.5.0",
     "ts-jest": "^29.2.4",
+    "ts-node": "^10.9.2",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1"
