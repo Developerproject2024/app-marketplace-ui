@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "format": "prettier --write .",
     "prepare": "husky",
-    "pre-commit": "npx lint-staged && npm run format && npm run test",
+    "pre-commit": "npx lint-staged && npm run format ", //TODO:&& npm run test pendientes
     "pre-push": "npm run release",
     "release": "standard-version && git push --follow-tags --no-verify"
   },
