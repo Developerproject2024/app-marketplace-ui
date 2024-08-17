@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/Developerproject2024/app-marketplace-ui/compare/v0.0.4...v0.0.5) (2024-08-17)
+
+
+### Features
+
+* backend call is made to create user ([35cb8d9](https://github.com/Developerproject2024/app-marketplace-ui/commit/35cb8d968c368bb9f5e351b917d3347ac4580ef1))
+* login, form creation and backend call ([ec89baf](https://github.com/Developerproject2024/app-marketplace-ui/commit/ec89baf406421072bdc8790c602f04441fef32d6))
+
 ### [0.0.4](https://github.com/Developerproject2024/app-marketplace-ui/compare/v0.0.3...v0.0.4) (2024-08-16)
 
 ### Features
