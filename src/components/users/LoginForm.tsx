@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { makeRequest } from '../../services/api';
+import { useDispatch } from 'react-redux';
+import { token } from '../../store/slice/loginSlice';
 
 interface NewUser {
   email: string;
@@ -13,6 +15,8 @@ const LoginForm = ({ onClose }) => {
     email: '',
     password: '',
   });
+
+  const dispatch = useDispatch();
 
   const validateForm = () => {
     const newErrors = {
@@ -60,6 +64,7 @@ const LoginForm = ({ onClose }) => {
         .then((user) => {
           setData(user);
           onClose(false);
+          dispatch(token({ ...user }));
         })
         .catch((error) => console.error('Error:', error));
       // setData(apiData.read());

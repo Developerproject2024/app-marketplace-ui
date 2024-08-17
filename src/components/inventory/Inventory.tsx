@@ -1,11 +1,21 @@
 import { useState } from 'react';
 import Session from '../users/Session';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
 
 const Inventory = () => {
   const [showModal, setShowModal] = useState(false);
+  const count = useSelector((state: RootState) => state.token);
   const fabio = () => {
-    setShowModal(true);
+    console.log('fuera===', count);
+    if (count.token != '') {
+      console.log('entro===', count);
+      setShowModal(false);
+    } else {
+      setShowModal(true);
+    }
   };
+
   return (
     <>
       {!showModal && (
