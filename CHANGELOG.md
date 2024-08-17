@@ -4,10 +4,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.0.6](https://github.com/Developerproject2024/app-marketplace-ui/compare/v0.0.5...v0.0.6) (2024-08-17)
 
-
 ### Features
 
-* installation and configuration of redux and redux toolkit ([c342f0f](https://github.com/Developerproject2024/app-marketplace-ui/commit/c342f0f42fb18bb9adfa02e4ed1e1ad90ae17281))
+- installation and configuration of redux and redux toolkit ([c342f0f](https://github.com/Developerproject2024/app-marketplace-ui/commit/c342f0f42fb18bb9adfa02e4ed1e1ad90ae17281))
 
 ### [0.0.5](https://github.com/Developerproject2024/app-marketplace-ui/compare/v0.0.4...v0.0.5) (2024-08-17)
 
