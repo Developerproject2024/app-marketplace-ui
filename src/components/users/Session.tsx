@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Modal } from '../users';
+import { Login, Modal } from '../users';
 
 const Session = ({ show, onClose }) => {
-  console.log('llego', show);
   const [showModal, setShowModal] = useState(false);
+  const [showModalLogin, setShowModalLogin] = useState(false);
   if (!show) return null;
   return (
     <div className="fixed inset-0 flex justify-center items-center z-50">
@@ -18,7 +18,12 @@ const Session = ({ show, onClose }) => {
         <div className="p-4">
           <p className="mb-4">registrate o inicia una sesión para empezar a agregar productos a tu inventario</p>
           <div className="flex justify-end space-x-2 mt-20">
-            <button className="bg-white text-black py-2 px-4 rounded  hover:bg-gray-400">INICIA SESION</button>
+            <button
+              className="bg-white text-black py-2 px-4 rounded  hover:bg-gray-400"
+              onClick={() => setShowModalLogin(true)}
+            >
+              INICIA SESION
+            </button>
             <button
               className="bg-gray-400 text-white py-2 px-4 rounded hover:bg-gray-700"
               onClick={() => setShowModal(true)}
@@ -30,6 +35,7 @@ const Session = ({ show, onClose }) => {
       </div>
 
       <Modal show={showModal} onClose={() => setShowModal(false)} />
+      <Login showLogin={showModalLogin} onCloseLogin={() => setShowModalLogin(false)} />
     </div>
   );
 };
