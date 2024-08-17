@@ -1,7 +1,15 @@
 import { useState } from 'react';
+import { makeRequest } from '../../services/api';
 
-const SignUpForm = () => {
-  const [errors, setErrors] = useState({ email: '', password_confirmation: '', password_new: '' });
+interface NewUser {
+  email: string;
+  password_confirmation: string;
+  password_new: string;
+}
+
+const SignUpForm = ({ onClose }) => {
+  const [data, setData] = useState([]);
+  const [errors, setErrors] = useState<NewUser>({ email: '', password_confirmation: '', password_new: '' });
   const [formData, setFormData] = useState({
     email: '',
     password_new: '',
@@ -33,7 +41,7 @@ const SignUpForm = () => {
     if (!formData.password_confirmation) {
       newErrors.password_confirmation = 'Please confirm your password';
     } else if (formData.password_confirmation !== formData.password_new) {
-      newErrors.password_confirmation = 'Passwords do not match';
+      newErrors.password_confirmation = 'Verifique las contraseña son diferentes';
     }
 
     setErrors(newErrors);
@@ -53,8 +61,13 @@ const SignUpForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      // Lógica para enviar el formulario
-      console.log('Form submitted successfully!', formData);
+      makeRequest<NewUser>('http://localhost:3000/api/marketplace/users', 'POST', formData, 'your-auth-token')
+        .then((user) => {
+          setData(user);
+          onClose(false);
+        })
+        .catch((error) => console.error('Error:', error));
+      // setData(apiData.read());
     }
   };
 
@@ -74,6 +87,7 @@ const SignUpForm = () => {
           className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
         />
         {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+        {data?.message && <p className="text-red-500 text-sm mt-1">{data?.message}</p>}
       </div>
 
       {/* Campo de Contraseña */}
