@@ -31,6 +31,14 @@ export interface IProduct {
   user: IUser;
 }
 
+export interface IFormProduct {
+  userId: number;
+  name: string;
+  sku: string;
+  amount: number;
+  price: number;
+}
+
 export interface IUser {
   email: string;
   id: number;
