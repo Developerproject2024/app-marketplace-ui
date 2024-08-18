@@ -11,7 +11,7 @@ interface NewUser {
 }
 
 interface ILoginFormProps {
-  onClose: () => void;
+  onClose: (data: boolean) => void;
 }
 
 const LoginForm: React.FC<ILoginFormProps> = ({ onClose }) => {
@@ -65,7 +65,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ onClose }) => {
         .then((item: any) => {
           onClose(false);
           dispatch(token(item));
-          const decoded: any = decodeToken(item.access_token);
+          const decoded = decodeToken(item.access_token);
           if (decoded.role === 'vendedor') {
             navigate('/products');
           } else {

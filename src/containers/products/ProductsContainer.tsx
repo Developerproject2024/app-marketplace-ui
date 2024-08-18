@@ -3,17 +3,10 @@ import { WithRoleProtection } from '../../components/context/WithRoleProtection'
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { CreateProduct, ProductForm, ProductsPresentation } from '../../components/products';
-import { IFormProduct, IProduct } from '../../interfaces';
 import { makeRequest } from '../../services/api';
 import { useNavigate } from 'react-router-dom';
 import { items } from '../../store/slice/products.Slice';
-
-export interface IFormData {
-  name: string;
-  sku: string;
-  amount: number;
-  price: number;
-}
+import { IProduct } from '../../interfaces';
 
 const ProductsContainer: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -69,8 +62,7 @@ const ProductsContainer: React.FC = () => {
     // Iterar sobre las reglas de validación
     Object.keys(validationRules).forEach((field) => {
       const { validate, message } = validationRules[field as keyof typeof validationRules];
-      const value = formData[field as keyof typeof formData];
-      console.log('das==', formData[field as keyof typeof formData]);
+      const value: string | number = formData[field as keyof typeof formData];
 
       if (!validate(value)) {
         newErrors[field as keyof typeof newErrors] = message;
@@ -97,7 +89,7 @@ const ProductsContainer: React.FC = () => {
         userId: 4,
       };
       makeRequest('http://localhost:3000/api/marketplace/products', 'POST', data, storeToken)
-        .then((product: IProduct | null) => {
+        .then((product) => {
           setIsModalOpen(false);
           dispatch(items(product));
           navigate('/products');

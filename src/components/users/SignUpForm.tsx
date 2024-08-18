@@ -28,7 +28,7 @@ interface ErrorMessage {
 }
 
 const SignUpForm: React.FC<SignUpFormProps> = ({ onClose }) => {
-  const [data, setData] = useState<ErrorMessage>();
+  const [data, setData] = useState<IUser | ErrorMessage | undefined>(undefined);
   const [errors, setErrors] = useState<NewUser>({ email: '', password_confirmation: '', password_new: '' });
   const [formData, setFormData] = useState({
     email: '',
@@ -77,12 +77,11 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onClose }) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validateForm()) {
       makeRequest<NewUser>('http://localhost:3000/api/marketplace/users', 'POST', formData, '')
-        .then((user: any) => {
-          console.log('datos user', user);
+        .then((user) => {
           setData(user);
           onClose(false);
         })
@@ -106,7 +105,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onClose }) => {
           className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
         />
         {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
-        {data?.message && <p className="text-red-500 text-sm mt-1">{data?.message}</p>}
+        {data && 'message' in data && data?.message && <p className="text-red-500 text-sm mt-1">{data?.message}</p>}
       </div>
 
       {/* Campo de Contraseña */}
