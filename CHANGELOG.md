@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.21](https://github.com/Developerproject2024/app-marketplace-ui/compare/v0.0.20...v0.0.21) (2024-08-18)
+
+
+### Features
+
+* error solving when deploying ([7f8b65d](https://github.com/Developerproject2024/app-marketplace-ui/commit/7f8b65dd2f73dddc9c92bf11d41c6a659cec7d22))
+
 ### [0.0.20](https://github.com/Developerproject2024/app-marketplace-ui/compare/v0.0.19...v0.0.20) (2024-08-18)
 
 ### Features
