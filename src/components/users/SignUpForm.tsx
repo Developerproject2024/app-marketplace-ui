@@ -11,6 +11,18 @@ interface SignUpFormProps {
   onClose: () => void;
 }
 
+export interface IUser {
+  email: string;
+  password: string;
+  role: Role;
+  id: number;
+}
+
+export interface Role {
+  id: number;
+  name: string;
+}
+
 const SignUpForm: React.FC<SignUpFormProps> = ({ onClose }) => {
   const [data, setData] = useState([]);
   const [errors, setErrors] = useState<NewUser>({ email: '', password_confirmation: '', password_new: '' });
@@ -64,8 +76,9 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      makeRequest<NewUser>('http://localhost:3000/api/marketplace/users', 'POST', formData, 'your-auth-token')
+      makeRequest<NewUser>('http://localhost:3000/api/marketplace/users', 'POST', formData, '')
         .then((user: any) => {
+          console.log('datos user', user);
           setData(user);
           onClose(false);
         })

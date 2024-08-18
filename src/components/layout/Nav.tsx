@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
 
-const Nav = ({ isOpen }) => {
+interface NavProps {
+  isOpen: boolean;
+}
+
+const Nav: React.FC<NavProps> = ({ isOpen }) => {
   return (
     <aside className={`bg-white text-black w-64 mt-10 p-4 space-y-2 ${isOpen ? 'block' : 'hidden'} md:block`}>
       <ul>

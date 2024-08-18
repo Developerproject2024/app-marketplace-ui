@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import { Login, Modal } from '../users';
 
-const Session = ({ show, onClose }) => {
+interface SessionProps {
+  show: boolean;
+  onClose: (data: boolean) => void;
+}
+
+const Session: React.FC<SessionProps> = ({ show, onClose }) => {
   const [showModal, setShowModal] = useState(false);
   const [showModalLogin, setShowModalLogin] = useState(false);
   if (!show) return null;
