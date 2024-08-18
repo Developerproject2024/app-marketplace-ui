@@ -4,10 +4,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.0.7](https://github.com/Developerproject2024/app-marketplace-ui/compare/v0.0.6...v0.0.7) (2024-08-17)
 
-
 ### Features
 
-* decrypt token and platform access control ([5fa3573](https://github.com/Developerproject2024/app-marketplace-ui/commit/5fa357344c4925bc258d27c276608cc1a1f9e697))
+- decrypt token and platform access control ([5fa3573](https://github.com/Developerproject2024/app-marketplace-ui/commit/5fa357344c4925bc258d27c276608cc1a1f9e697))
 
 ### [0.0.6](https://github.com/Developerproject2024/app-marketplace-ui/compare/v0.0.5...v0.0.6) (2024-08-17)
 

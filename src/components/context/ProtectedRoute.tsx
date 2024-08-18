@@ -1,13 +1,9 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
+import { IProtectedRouteProps } from '../../interfaces';
 
-interface ProtectedRouteProps {
-  children: React.ReactNode;
-  allowedRoles: ('admin' | 'seller')[];
-}
-
-const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, allowedRoles }) => {
+const ProtectedRoute: React.FC<IProtectedRouteProps> = ({ children, allowedRoles }) => {
   const { userRole } = useAuth();
 
   if (!allowedRoles.includes(userRole)) {

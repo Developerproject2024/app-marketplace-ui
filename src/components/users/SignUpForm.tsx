@@ -55,7 +55,6 @@ const SignUpForm = ({ onClose }) => {
       ...formData,
       [name]: value,
     });
-    console.log();
   };
 
   const handleSubmit = (e) => {

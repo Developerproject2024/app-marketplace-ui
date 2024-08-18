@@ -1,13 +1,10 @@
 import React, { createContext, useContext, ReactNode } from 'react';
+import { IAuthContextType } from '../../interfaces';
 
-interface AuthContextType {
-  userRole: 'admin' | 'seller' | 'guest';
-}
-
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const AuthContext = createContext<IAuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const userRole: 'admin' | 'seller' | 'guest' = 'admin'; // Ejemplo de rol (esto debe venir de tu lógica de autenticación)
+  const userRole: 'administrador' | 'vendedor' | 'comprador' = 'comprador';
 
   return <AuthContext.Provider value={{ userRole }}>{children}</AuthContext.Provider>;
 };

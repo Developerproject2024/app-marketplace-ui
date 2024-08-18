@@ -5,7 +5,7 @@ import { RootState } from '../../store/store';
 
 const Inventory = () => {
   const [showModal, setShowModal] = useState(false);
-  const count = useSelector((state: RootState) => state.token);
+  const count = useSelector((state: RootState) => state.auth);
   const fabio = () => {
     console.log('fuera===', count);
     if (count.token != '') {
