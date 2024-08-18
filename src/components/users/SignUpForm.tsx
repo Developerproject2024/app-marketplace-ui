@@ -8,7 +8,7 @@ interface NewUser {
 }
 
 interface SignUpFormProps {
-  onClose: () => void;
+  onClose: (data: boolean) => void;
 }
 
 export interface IUser {
@@ -23,8 +23,12 @@ export interface Role {
   name: string;
 }
 
+interface ErrorMessage {
+  message: string;
+}
+
 const SignUpForm: React.FC<SignUpFormProps> = ({ onClose }) => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<ErrorMessage>();
   const [errors, setErrors] = useState<NewUser>({ email: '', password_confirmation: '', password_new: '' });
   const [formData, setFormData] = useState({
     email: '',
@@ -65,7 +69,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onClose }) => {
     return Object.values(newErrors).every((value) => value === '');
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,

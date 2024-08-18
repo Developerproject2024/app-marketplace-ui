@@ -49,7 +49,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ onClose }) => {
     return Object.values(newErrors).every((value) => value === '');
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -58,7 +58,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ onClose }) => {
     console.log();
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     if (validateForm()) {
       makeRequest<NewUser>(
