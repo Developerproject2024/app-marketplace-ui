@@ -25,11 +25,12 @@ export interface IProduct {
   amount: string;
   id: number;
   name: string;
-  price: string;
-  sku: ISku;
+  price: number;
+  sku: string;
+  user: IUser;
 }
 
-export interface ISku {
+export interface IUser {
   email: string;
   id: number;
   password: string;

@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 
-const PriceFilter: React.FC = () => {
-  // Inicializar minPrice en 100 y maxPrice en 1000
+interface PriceFilterProps {
+  onPriceChange: (minPrice: number, maxPrice: number) => void;
+}
+
+const PriceFilter: React.FC<PriceFilterProps> = ({ onPriceChange }) => {
   const [minPrice, setMinPrice] = useState<number>(100);
-  const [maxPrice, setMaxPrice] = useState<number>(5000); // Rango máximo dinámico
+  const [maxPrice, setMaxPrice] = useState<number>(5000);
 
   // Maneja los cambios en el slider
   const handleMinPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -11,6 +14,7 @@ const PriceFilter: React.FC = () => {
     // Asegúrate de que minPrice no sea mayor que maxPrice
     if (newMinPrice <= maxPrice) {
       setMinPrice(newMinPrice);
+      onPriceChange(newMinPrice, maxPrice);
     }
   };
 
@@ -19,6 +23,7 @@ const PriceFilter: React.FC = () => {
     // Asegúrate de que maxPrice no sea menor que minPrice
     if (newMaxPrice >= minPrice) {
       setMaxPrice(newMaxPrice);
+      onPriceChange(minPrice, newMaxPrice);
     }
   };
 
