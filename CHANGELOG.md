@@ -4,14 +4,13 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.0.8](https://github.com/Developerproject2024/app-marketplace-ui/compare/v0.0.7...v0.0.8) (2024-08-18)
 
-
 ### Features
 
-* complete product module ([f7c2cda](https://github.com/Developerproject2024/app-marketplace-ui/commit/f7c2cda36e966b1f18d1cfa99b0ecaee92d8699d))
-* create product, access control ([59bbccc](https://github.com/Developerproject2024/app-marketplace-ui/commit/59bbcccb5e9a4a736910e5811de33d1a1f65cd14))
-* ready the filters by range and search by name and sku ([0a12162](https://github.com/Developerproject2024/app-marketplace-ui/commit/0a12162339259885d8cad61b95cf8748fe799dfa))
-* sales role access control ([2b70844](https://github.com/Developerproject2024/app-marketplace-ui/commit/2b7084444496b0318031a58ae7832571bef57f50))
-* the Colombian peso format function is placed ([e7a35d5](https://github.com/Developerproject2024/app-marketplace-ui/commit/e7a35d5213bde7ef2546cee83cb5c6c1c6685dba))
+- complete product module ([f7c2cda](https://github.com/Developerproject2024/app-marketplace-ui/commit/f7c2cda36e966b1f18d1cfa99b0ecaee92d8699d))
+- create product, access control ([59bbccc](https://github.com/Developerproject2024/app-marketplace-ui/commit/59bbcccb5e9a4a736910e5811de33d1a1f65cd14))
+- ready the filters by range and search by name and sku ([0a12162](https://github.com/Developerproject2024/app-marketplace-ui/commit/0a12162339259885d8cad61b95cf8748fe799dfa))
+- sales role access control ([2b70844](https://github.com/Developerproject2024/app-marketplace-ui/commit/2b7084444496b0318031a58ae7832571bef57f50))
+- the Colombian peso format function is placed ([e7a35d5](https://github.com/Developerproject2024/app-marketplace-ui/commit/e7a35d5213bde7ef2546cee83cb5c6c1c6685dba))
 
 ### [0.0.7](https://github.com/Developerproject2024/app-marketplace-ui/compare/v0.0.6...v0.0.7) (2024-08-17)
 

@@ -62,3 +62,12 @@ export interface IProductsForm {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: () => void;
 }
+
+export interface IProvider {
+  id: number;
+  email: string;
+}
+export interface IProviderFilterProps {
+  providers: IProvider[];
+  onFilterChange: (selectedProviders: number[]) => void;
+}

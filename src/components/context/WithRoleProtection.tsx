@@ -8,7 +8,6 @@ export const WithRoleProtection = <P extends object>(
 ) => {
   const ComponentWithRoleProtection: React.FC<P> = (props) => {
     const { user } = useAuth();
-
     if (user?.role !== requiredRole) {
       // Puedes redirigir a otra página o mostrar un mensaje de acceso denegado
       return <Navigate to="/unauthorized" replace />;

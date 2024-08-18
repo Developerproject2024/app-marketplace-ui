@@ -8,8 +8,11 @@ import { items } from './store/slice/products.Slice';
 import InventoryContainer from './containers/inventory/InventoryContainer';
 import ProductsContainer from './containers/products/ProductsContainer';
 import { Layout } from './components/layout';
+import LoginContainer from './containers/Login/LoginContainer';
+import AdminContainer from './containers/admin/AdminContainer';
 
 function App() {
+  console.log('entrooo');
   const dispatch = useDispatch();
   makeRequest('http://localhost:3000/api/marketplace/products', 'GET')
     .then((item) => {
@@ -25,6 +28,9 @@ function App() {
             <Route path="/inventory" element={<InventoryContainer />} />
             <Route path="/products" element={<ProductsContainer />} />
             <Route path="/buy" element={<PurchaserContainer />} />
+
+            <Route path="/login" element={<LoginContainer />} />
+            <Route path="/admin" element={<AdminContainer />} />
           </Route>
         </Routes>
       </Router>

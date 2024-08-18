@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { clearToken } from '../../store/slice/loginSlice';
+import { Link } from 'react-router-dom';
 
 interface ToolbarProps {
   toggleMenu: () => void;
@@ -10,7 +11,7 @@ const Toolbar: React.FC<ToolbarProps> = ({ toggleMenu }) => {
   const storeToken = useSelector((state: RootState) => state.auth.decode);
   const dispatch = useDispatch();
 
-  const fabio = () => {
+  const logout = () => {
     dispatch(clearToken());
   };
   return (
@@ -22,10 +23,12 @@ const Toolbar: React.FC<ToolbarProps> = ({ toggleMenu }) => {
           {storeToken.role != 'comprador' ? (
             <div>
               <h1>Rol: {storeToken.role}</h1>
-              <button onClick={fabio}>Salir</button>
+              <button onClick={logout}>Salir</button>
             </div>
           ) : (
-            <h1>Inicia sesión</h1>
+            <h1>
+              <Link to="login">Inicia sesión</Link>
+            </h1>
           )}
         </div>
       </nav>

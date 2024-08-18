@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { WithRoleProtection } from '../../components/context/WithRoleProtection';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { CreateProduct, Modal, ProductForm, ProductsPresentation } from '../../components/products';
 import { IProduct } from '../../interfaces';
 import { makeRequest } from '../../services/api';
 import { useNavigate } from 'react-router-dom';
+import { items } from '../../store/slice/products.Slice';
 
 const ProductsContainer: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -18,6 +19,7 @@ const ProductsContainer: React.FC = () => {
 
   const storeToken = useSelector((state: RootState) => state.auth.token);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -82,7 +84,6 @@ const ProductsContainer: React.FC = () => {
 
   const handleSubmit = () => {
     if (validate()) {
-      console.log(formData);
       const data = {
         ...formData,
         userId: 4,
@@ -90,10 +91,7 @@ const ProductsContainer: React.FC = () => {
       makeRequest('http://localhost:3000/api/marketplace/products', 'POST', data, storeToken)
         .then((product: any) => {
           setIsModalOpen(false);
-          // setData(item);
-          // onClose(false);
-          // dispatch(token(item));
-          // decodeToken(item.access_token);
+          dispatch(items(product));
           navigate('/products');
         })
         .catch((error) => console.error('Error:', error));
@@ -109,7 +107,21 @@ const ProductsContainer: React.FC = () => {
         </>
       ) : (
         <div>
-          <h1>regresar</h1>
+          <div className="flex flex-row items-center  ">
+            <button onClick={closeModal}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              regresar
+            </button>
+          </div>
           <ProductForm formData={formData} errors={errors} onChange={handleChange} onSubmit={handleSubmit} />
         </div>
       )}

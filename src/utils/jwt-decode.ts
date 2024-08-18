@@ -17,6 +17,7 @@ const decodeToken = (token: string) => {
     console.log('Decodificando token...');
     const decoded = jwtDecode<JwtPayload>(token);
     dispatch(decode(decoded));
+    return decoded;
   } catch (error) {
     console.error('Error al decodificar el token:', error);
   }

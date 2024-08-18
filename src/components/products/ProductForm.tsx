@@ -3,7 +3,7 @@ import { IProductsForm } from '../../interfaces';
 
 const ProductForm: React.FC<IProductsForm> = ({ formData, errors, onChange, onSubmit }) => {
   return (
-    <div className="p-6 max-w-md mx-auto bg-white rounded-lg shadow-md">
+    <div className="p-6 mt-24 max-w-md mx-auto bg-white rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-4">Crear producto</h2>
       <form
         onSubmit={(e) => {
@@ -44,7 +44,7 @@ const ProductForm: React.FC<IProductsForm> = ({ formData, errors, onChange, onSu
             onChange={onChange}
             className={`mt-1 p-2 border rounded w-full ${errors.quantity ? 'border-red-500' : 'border-gray-300'}`}
           />
-          {errors.quantity && <p className="text-red-500 text-sm">{errors.amount}</p>}
+          {errors.amount && <p className="text-red-500 text-sm">{errors.amount}</p>}
         </div>
 
         <div className="mb-4">
@@ -58,10 +58,14 @@ const ProductForm: React.FC<IProductsForm> = ({ formData, errors, onChange, onSu
           />
           {errors.price && <p className="text-red-500 text-sm">{errors.price}</p>}
         </div>
-
-        <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
-          Enviar
-        </button>
+        <div className="flex justify-end">
+          <button
+            type="submit"
+            className="w-32 bg-gray-400 text-white py-2 px-4 rounded hover:bg-gray-200 hover:text-black"
+          >
+            Crear
+          </button>
+        </div>
       </form>
     </div>
   );

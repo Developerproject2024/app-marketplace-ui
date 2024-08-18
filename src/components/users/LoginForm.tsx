@@ -68,8 +68,12 @@ const LoginForm = ({ onClose }) => {
           setData(item);
           onClose(false);
           dispatch(token(item));
-          decodeToken(item.access_token);
-          navigate('/products');
+          const decoded: any = decodeToken(item.access_token);
+          if (decoded.role === 'vendedor') {
+            navigate('/products');
+          } else {
+            navigate('/admin');
+          }
         })
         .catch((error) => console.error('Error:', error));
     }

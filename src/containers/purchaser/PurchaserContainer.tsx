@@ -9,6 +9,8 @@ const PurchaserContainer: React.FC = () => {
   const [minPrice, setMinPrice] = useState<number>(100);
   const [maxPrice, setMaxPrice] = useState<number>(5000);
   const products = useSelector((state: RootState) => state.products.items);
+
+  console.log('filteredProducts', products);
   const filteredProducts = products.filter(
     (product) =>
       (product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -34,7 +36,7 @@ const PurchaserContainer: React.FC = () => {
       {/* Columna derecha */}
       <div className="w-3/4">
         <SearchComponent onSearch={handleSearch} />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
           {filteredProducts?.map((product) => (
             <ProductCard
               image="https://via.placeholder.com/150"
