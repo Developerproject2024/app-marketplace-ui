@@ -1,50 +1,68 @@
-# React + TypeScript + Vite
+# Proyecto React con TypeScript y Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este es un proyecto de ejemplo que utiliza React, TypeScript y Vite para el Marketplace de una compañia
 
-Currently, two official plugins are available:
+## Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React**: Biblioteca de JavaScript para construir interfaces de usuario.
+- **TypeScript**: Un superset de JavaScript que añade tipado estático.
+- **Vite**: Herramienta de construcción rápida para el desarrollo y la construcción de proyectos.
+- **Tailwind**:
+- **Redux**:
 
-## Expanding the ESLint configuration
+## Instalación
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. **Clonar el repositorio**:
 
-- Configure the top-level `parserOptions` property like this:
+   ```bash
+   git clone https://github.com/Developerproject2024/app-marketplace-ui.git
+   cd app-marketplace-ui
+   $ npm install
+   $ npm run dev
+   ```
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
-```
+2. **Roles**:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- **Administrador**: rol que pemrite visualizar todos los productos del marketpave y realizar filtros
+- **Vendedor**: rol para crear productos
+- **Comprador**: rol que permite ver todos los productos
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react';
+3. **Manual de Usuario por Rol**:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-});
+- **Comprador**:
+  ![Logo](src/assets/manual/admin.png)
+
+- **Vendedor**: usuario que necesita iniciar sesion
+
+  ![vendedor](src/assets/manual/vendedor.png)
+
+  Click en el boton crear producto
+
+  ![vendedor](src/assets/manual/boton-crear_producto.png)
+
+Modal con opciones para iniciar sesion o registrarse
+![vendedor](src/assets/manual/cuenta.png)
+
+Iniciar esion
+
+![vendedor](src/assets/manual/inicia-sesion.png)
+
+clic botn registrar
+
+![vendedor](src/assets/manual/registar.png)
+
+- **Administrador**: usuario que necesita iniciar sesion
+  Clic boton de la barra superior a la derecha
+  ![vendedor](src/assets/manual/inicar.png)
+
+![vendedor](src/assets/manual/inicia-sesion.png)
+
+clic botn inicia sesión
+
+2. **Usuario de prueba de Administrador**:
+
+```bash
+   email: admin@admin.com
+   contraseña: 1
+
 ```
