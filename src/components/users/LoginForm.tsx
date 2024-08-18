@@ -61,15 +61,25 @@ const LoginForm: React.FC<ILoginFormProps> = ({ onClose }) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validateForm()) {
-      makeRequest<NewUser>('http://localhost:3000/api/marketplace/auth/authentication', 'POST', formData, '')
-        .then((item: any) => {
+      makeRequest<NewUser | { access_token: string } | null>(
+        'http://localhost:3000/api/marketplace/auth/authentication',
+        'POST',
+        formData,
+        '',
+      )
+        .then((item) => {
           onClose(false);
           dispatch(token(item));
-          const decoded = decodeToken(item.access_token);
-          if (decoded.role === 'vendedor') {
-            navigate('/products');
+          if (item != null && 'access_token' in item) {
+            const decoded = decodeToken(item.access_token);
+            if (decoded && decoded.role === 'vendedor') {
+              navigate('/products');
+            } else {
+              navigate('/admin');
+            }
           } else {
-            navigate('/admin');
+            // De lo contrario, es de tipo NewUser
+            console.log('NewUser received:', item);
           }
         })
         .catch((error) => console.error('Error:', error));
