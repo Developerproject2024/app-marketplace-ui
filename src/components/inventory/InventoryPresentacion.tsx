@@ -1,24 +1,17 @@
 import { useState } from 'react';
-import Session from '../users/Session';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
 
-const Inventory = () => {
-  const [showModal, setShowModal] = useState(false);
-  const count = useSelector((state: RootState) => state.auth);
-  const fabio = () => {
-    console.log('fuera===', count);
-    if (count.token != '') {
-      console.log('entro===', count);
-      setShowModal(false);
-    } else {
-      setShowModal(true);
-    }
+interface InventoryPresentacionProps {
+  show: boolean;
+  onCloseInventory: () => void;
+}
+
+const InventoryPresentacion: React.FC<InventoryPresentacionProps> = ({ show, onCloseInventory }) => {
+  const createdProduct = () => {
+    onCloseInventory(true);
   };
-
   return (
     <>
-      {!showModal && (
+      {!show && (
         <div>
           <div className="flex flex-col md:flex-row items-center justify-center  bg-gray-100 p-6">
             <div className="w-96 md:w-1/4 p-4">
@@ -35,7 +28,10 @@ const Inventory = () => {
               </h2>
               <div className="flex space-x-4">
                 <button className=" text-blue-400 py-2 px-4 rounded underline">Conoce más</button>
-                <button className="bg-gray-400 text-black py-2 px-4 rounded hover:bg-gray-200" onClick={() => fabio()}>
+                <button
+                  className="bg-gray-400 text-black py-2 px-4 rounded hover:bg-gray-200"
+                  onClick={() => createdProduct()}
+                >
                   CREAR PRODUCTO
                 </button>
               </div>
@@ -46,9 +42,8 @@ const Inventory = () => {
           </div>
         </div>
       )}
-      <Session show={showModal} onClose={() => setShowModal(false)} />
     </>
   );
 };
 
-export default Inventory;
+export default InventoryPresentacion;

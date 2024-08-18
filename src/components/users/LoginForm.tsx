@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { makeRequest } from '../../services/api';
 import { useDispatch } from 'react-redux';
 import { token } from '../../store/slice/loginSlice';
+import { useNavigate } from 'react-router-dom';
+import decodeToken from '../../utils/jwt-decode';
 
 interface NewUser {
   email: string;
@@ -17,6 +19,7 @@ const LoginForm = ({ onClose }) => {
   });
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const validateForm = () => {
     const newErrors = {
@@ -61,10 +64,12 @@ const LoginForm = ({ onClose }) => {
         formData,
         'your-auth-token',
       )
-        .then((user) => {
-          setData(user);
+        .then((item: any) => {
+          setData(item);
           onClose(false);
-          dispatch(token({ ...user }));
+          dispatch(token(item));
+          decodeToken(item.access_token);
+          navigate('/products');
         })
         .catch((error) => console.error('Error:', error));
       // setData(apiData.read());
@@ -106,10 +111,10 @@ const LoginForm = ({ onClose }) => {
       </div>
 
       <div className="flex flex-col justify-center items-center mt-10">
-        <button type="submit" className="w-32 bg-gray-300 text-gray-500 py-2 px-4 rounded hover:bg-blue-700">
-          REGISTRARSE
-        </button>
-        <button type="submit" className="w-32  text-blue-400 py-2 px-4 rounded hover:bg-blue-700 mt-1">
+        <button
+          type="submit"
+          className="w-32 bg-gray-400 text-white py-2 px-4 rounded hover:bg-gray-200 hover:text-black"
+        >
           Inicia sesión
         </button>
       </div>
