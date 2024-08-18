@@ -120,14 +120,14 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onClose }) => {
           name="password_new"
           value={formData.password_new}
           onChange={(e) => handleChange(e)}
-          className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.password ? 'border-red-500' : 'border-gray-300'}`}
+          className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.password_new ? 'border-red-500' : 'border-gray-300'}`}
         />
         {errors.password_new && <p className="text-red-500 text-sm mt-1">{errors.password_new}</p>}
       </div>
 
       {/* Campo de Confirmar Contraseña */}
       <div className="mb-4">
-        <label htmlFor="confirmPassword" className="block text-gray-700 font-bold mb-2">
+        <label htmlFor="password_confirmation" className="block text-gray-700 font-bold mb-2">
           Confirmar contraseña
         </label>
         <input
@@ -136,7 +136,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onClose }) => {
           name="password_confirmation"
           value={formData.password_confirmation}
           onChange={(e) => handleChange(e)}
-          className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.confirmPassword ? 'border-red-500' : 'border-gray-300'}`}
+          className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.password_confirmation ? 'border-red-500' : 'border-gray-300'}`}
         />
         {errors.password_confirmation && <p className="text-red-500 text-sm mt-1">{errors.password_confirmation}</p>}
       </div>
