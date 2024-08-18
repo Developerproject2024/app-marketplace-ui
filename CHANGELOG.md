@@ -4,10 +4,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.0.19](https://github.com/Developerproject2024/app-marketplace-ui/compare/v0.0.17...v0.0.19) (2024-08-18)
 
-
 ### Features
 
-* error solving when deploying ([f27a957](https://github.com/Developerproject2024/app-marketplace-ui/commit/f27a9577bbe6cc44ccc9933d434c55e62e42df4b))
+- error solving when deploying ([f27a957](https://github.com/Developerproject2024/app-marketplace-ui/commit/f27a9577bbe6cc44ccc9933d434c55e62e42df4b))
 
 ### [0.0.18](https://github.com/Developerproject2024/app-marketplace-ui/compare/v0.0.17...v0.0.18) (2024-08-18)
 

@@ -80,3 +80,15 @@ export interface IProviderFilterProps {
   providers: IProvider[];
   onFilterChange: (selectedProviders: number[]) => void;
 }
+
+export interface IUserRole {
+  email: string;
+  password: string;
+  role: Role;
+  id: number;
+}
+
+export interface Role {
+  id: number;
+  name: string;
+}
