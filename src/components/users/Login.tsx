@@ -1,6 +1,10 @@
 import LoginForm from './LoginForm';
+interface ModalProps {
+  showLogin: boolean;
+  onCloseLogin: () => void;
+}
 
-const Modal = ({ showLogin, onCloseLogin }) => {
+const Modal: React.FC<ModalProps> = ({ showLogin, onCloseLogin }) => {
   if (!showLogin) return null;
 
   return (

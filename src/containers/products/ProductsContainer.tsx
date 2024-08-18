@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { WithRoleProtection } from '../../components/context/WithRoleProtection';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
-import { CreateProduct, Modal, ProductForm, ProductsPresentation } from '../../components/products';
+import { CreateProduct, ProductForm, ProductsPresentation } from '../../components/products';
 import { IProduct } from '../../interfaces';
 import { makeRequest } from '../../services/api';
 import { useNavigate } from 'react-router-dom';
@@ -125,12 +125,6 @@ const ProductsContainer: React.FC = () => {
           <ProductForm formData={formData} errors={errors} onChange={handleChange} onSubmit={handleSubmit} />
         </div>
       )}
-      {/* <Modal isOpen={isModalOpen} onClose={closeModal} title="Mi Modal">
-        <p>Contenido del modal aquí.</p>
-        <button onClick={closeModal} className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 mt-4">
-          Cerrar
-        </button>
-      </Modal> */}
     </>
   );
 };

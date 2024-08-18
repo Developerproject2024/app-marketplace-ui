@@ -1,8 +1,6 @@
-import { useState } from 'react';
-
 interface InventoryPresentacionProps {
   show: boolean;
-  onCloseInventory: () => void;
+  onCloseInventory: (data: boolean) => void;
 }
 
 const InventoryPresentacion: React.FC<InventoryPresentacionProps> = ({ show, onCloseInventory }) => {

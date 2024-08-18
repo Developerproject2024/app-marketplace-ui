@@ -7,7 +7,11 @@ interface NewUser {
   password_new: string;
 }
 
-const SignUpForm = ({ onClose }) => {
+interface SignUpFormProps {
+  onClose: () => void;
+}
+
+const SignUpForm: React.FC<SignUpFormProps> = ({ onClose }) => {
   const [data, setData] = useState([]);
   const [errors, setErrors] = useState<NewUser>({ email: '', password_confirmation: '', password_new: '' });
   const [formData, setFormData] = useState({
@@ -61,12 +65,11 @@ const SignUpForm = ({ onClose }) => {
     e.preventDefault();
     if (validateForm()) {
       makeRequest<NewUser>('http://localhost:3000/api/marketplace/users', 'POST', formData, 'your-auth-token')
-        .then((user) => {
+        .then((user: any) => {
           setData(user);
           onClose(false);
         })
         .catch((error) => console.error('Error:', error));
-      // setData(apiData.read());
     }
   };
 

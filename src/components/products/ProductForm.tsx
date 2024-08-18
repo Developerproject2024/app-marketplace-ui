@@ -42,7 +42,7 @@ const ProductForm: React.FC<IProductsForm> = ({ formData, errors, onChange, onSu
             name="amount"
             value={formData.amount}
             onChange={onChange}
-            className={`mt-1 p-2 border rounded w-full ${errors.quantity ? 'border-red-500' : 'border-gray-300'}`}
+            className={`mt-1 p-2 border rounded w-full ${errors.amount ? 'border-red-500' : 'border-gray-300'}`}
           />
           {errors.amount && <p className="text-red-500 text-sm">{errors.amount}</p>}
         </div>

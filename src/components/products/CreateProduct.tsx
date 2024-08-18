@@ -1,4 +1,8 @@
-const CreateProduct = ({ onchange }) => {
+interface CreateProductProps {
+  onchange: () => void;
+}
+
+const CreateProduct: React.FC<CreateProductProps> = ({ onchange }) => {
   const create = () => {
     onchange();
   };

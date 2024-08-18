@@ -1,7 +1,10 @@
-import React from 'react';
 import SignUpForm from './SignUpForm';
+interface IModalProps {
+  show: boolean;
+  onClose: () => void;
+}
 
-const Modal = ({ show, onClose }) => {
+const Modal: React.FC<IModalProps> = ({ show, onClose }) => {
   if (!show) return null;
 
   return (

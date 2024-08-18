@@ -10,8 +10,11 @@ interface NewUser {
   password: string;
 }
 
-const LoginForm = ({ onClose }) => {
-  const [data, setData] = useState([]);
+interface ILoginFormProps {
+  onClose: () => void;
+}
+
+const LoginForm: React.FC<ILoginFormProps> = ({ onClose }) => {
   const [errors, setErrors] = useState<NewUser>({ email: '', password: '' });
   const [formData, setFormData] = useState({
     email: '',
@@ -65,7 +68,6 @@ const LoginForm = ({ onClose }) => {
         'your-auth-token',
       )
         .then((item: any) => {
-          setData(item);
           onClose(false);
           dispatch(token(item));
           const decoded: any = decodeToken(item.access_token);
