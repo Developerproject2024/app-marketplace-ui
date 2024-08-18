@@ -4,6 +4,7 @@ export interface ITokenState {
 }
 
 export interface IJwtPayload {
+  userId: number;
   username: string;
   role: 'administrador' | 'vendedor' | 'comprador';
   exp: number;

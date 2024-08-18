@@ -13,7 +13,7 @@ const InventoryContainer: React.FC = () => {
   const [showModalLogin, setShowModalLogin] = useState(false);
   const storeToken = useSelector((state: RootState) => state.auth.token);
   console.log('storeToken', storeToken);
-  const register = (data: true) => {
+  const register = (data: boolean) => {
     setShowModal(data);
   };
   return (

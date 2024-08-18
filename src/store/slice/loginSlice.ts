@@ -4,6 +4,7 @@ import { ITokenState } from '../../interfaces';
 const initialState: ITokenState = {
   token: '',
   decode: {
+    userId: 0,
     username: '',
     role: 'comprador',
     exp: 0,
@@ -22,6 +23,7 @@ export const loginSlice = createSlice({
     },
     clearToken: (state) => {
       state.decode = {
+        userId: 0,
         username: '',
         role: 'comprador',
         exp: 0,

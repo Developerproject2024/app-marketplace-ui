@@ -58,15 +58,10 @@ const LoginForm: React.FC<ILoginFormProps> = ({ onClose }) => {
     console.log();
   };
 
-  const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validateForm()) {
-      makeRequest<NewUser>(
-        'http://localhost:3000/api/marketplace/auth/authentication',
-        'POST',
-        formData,
-        'your-auth-token',
-      )
+      makeRequest<NewUser>('http://localhost:3000/api/marketplace/auth/authentication', 'POST', formData, '')
         .then((item: any) => {
           onClose(false);
           dispatch(token(item));

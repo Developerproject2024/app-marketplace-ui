@@ -1,7 +1,7 @@
 import SignUpForm from './SignUpForm';
 interface IModalProps {
   show: boolean;
-  onClose: () => void;
+  onClose: (data: boolean) => void;
 }
 
 const Modal: React.FC<IModalProps> = ({ show, onClose }) => {

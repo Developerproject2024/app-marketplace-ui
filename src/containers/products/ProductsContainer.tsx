@@ -8,6 +8,8 @@ import { makeRequest } from '../../services/api';
 import { useNavigate } from 'react-router-dom';
 import { items } from '../../store/slice/products.Slice';
 
+type ValidTypes = 'string' | 'number';
+
 const ProductsContainer: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -62,7 +64,7 @@ const ProductsContainer: React.FC = () => {
     // Iterar sobre las reglas de validación
     Object.keys(validationRules).forEach((field) => {
       const { validate, message } = validationRules[field as keyof typeof validationRules];
-      const value = formData[field as keyof typeof formData];
+      const value: string | number = formData[field as keyof typeof formData];
 
       if (!validate(value)) {
         newErrors[field as keyof typeof newErrors] = message;
