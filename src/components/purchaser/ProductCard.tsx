@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatToColombianPesos } from '../../utils';
 
 interface ProductCardProps {
   image: string;
@@ -13,7 +14,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ image, name, price, sku }) =>
       <img src={image} alt={name} className="w-32 h-32 object-cover mb-2 rounded-md" />
       <h3 className="text-lg font-semibold mb-1">{name}</h3>
       <h3 className="text-lg font-semibold mb-1">{sku}</h3>
-      <p className="text-gray-600">${price}</p>
+      <p className="text-gray-600">{formatToColombianPesos(price)}</p>
     </div>
   );
 };
