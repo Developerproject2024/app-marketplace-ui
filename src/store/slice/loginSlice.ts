@@ -20,11 +20,19 @@ export const loginSlice = createSlice({
     decode: (state, action) => {
       state.decode = action.payload;
     },
+    clearToken: (state) => {
+      state.decode = {
+        username: '',
+        role: 'comprador',
+        exp: 0,
+      };
+      state.token = '';
+    },
   },
 });
 
 // Exporta las acciones generadas
-export const { token, decode } = loginSlice.actions;
+export const { token, decode, clearToken } = loginSlice.actions;
 
 // Exporta el reducer por defecto del slice
 export default loginSlice.reducer;

@@ -6,7 +6,7 @@ export interface ITokenState {
 export interface IJwtPayload {
   username: string;
   role: 'administrador' | 'vendedor' | 'comprador';
-  exp: number; // Timestamp de expiración
+  exp: number;
 }
 
 export interface IAuthContextType {
@@ -22,7 +22,7 @@ export interface IProducts {
   items: IProduct[];
 }
 export interface IProduct {
-  amount: string;
+  amount: number;
   id: number;
   name: string;
   price: number;
@@ -34,4 +34,31 @@ export interface IUser {
   email: string;
   id: number;
   password: string;
+}
+
+export interface IProductTable {
+  name: string;
+  sku: string;
+  amount: number;
+}
+
+export interface IProductsData {
+  data: IProductTable[];
+}
+
+export interface IProductsForm {
+  formData: {
+    name: string;
+    sku: string;
+    amount: number;
+    price: number;
+  };
+  errors: {
+    name?: string;
+    sku?: string;
+    amount?: string;
+    price?: string;
+  };
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onSubmit: () => void;
 }

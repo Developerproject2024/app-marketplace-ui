@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import PriceFilter from '../../components/purchaser/PriceFilter';
-import SearchComponent from '../../components/purchaser/SearchComponent';
-import ProductCard from '../../components/purchaser/ProductCard';
+import { ProductCard, SearchComponent, PriceFilter } from '../../components/purchaser';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
+import { WithRoleProtection } from '../../components/context/WithRoleProtection';
 
 const PurchaserContainer: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -51,4 +50,4 @@ const PurchaserContainer: React.FC = () => {
   );
 };
 
-export default PurchaserContainer;
+export default WithRoleProtection(PurchaserContainer, 'comprador');

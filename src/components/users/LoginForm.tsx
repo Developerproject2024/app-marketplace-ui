@@ -72,13 +72,11 @@ const LoginForm = ({ onClose }) => {
           navigate('/products');
         })
         .catch((error) => console.error('Error:', error));
-      // setData(apiData.read());
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className="max-w-lg w-full mx-auto bg-white p-8 rounded-lg ">
-      {/* Campo de Email */}
       <div className="mb-4">
         <label htmlFor="email" className="block text-gray-700 font-bold mb-2">
           Correo
@@ -93,8 +91,6 @@ const LoginForm = ({ onClose }) => {
         />
         {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
       </div>
-
-      {/* Campo de Contraseña */}
       <div className="mb-4">
         <label htmlFor="password" className="block text-gray-700 font-bold mb-2">
           Contraseña

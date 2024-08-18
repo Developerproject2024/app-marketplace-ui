@@ -9,9 +9,9 @@ export const makeRequest = async <T>(
     headers: {
       'x-api-key': '1',
       'Content-Type': 'application/json',
-      ...(token && { Authorization: `Bearer ${token}` }), // Añade autorización si hay token
+      ...(token && { Authorization: `Bearer ${token}` }),
     },
-    ...(data && method !== 'GET' && { body: JSON.stringify(data) }), // Añade el cuerpo si es necesario
+    ...(data && method !== 'GET' && { body: JSON.stringify(data) }),
   };
 
   try {
@@ -20,8 +20,6 @@ export const makeRequest = async <T>(
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
-
-    // Retorna JSON si la respuesta tiene contenido, si no, retorna null
     return response.status !== 204 ? ((await response.json()) as T) : null;
   } catch (error) {
     console.error('Request failed:', error);
