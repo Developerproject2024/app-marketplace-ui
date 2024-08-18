@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.9](https://github.com/Developerproject2024/app-marketplace-ui/compare/v0.0.8...v0.0.9) (2024-08-18)
+
+
+### Features
+
+* content and presentation of the administrative user are created ([318f7b4](https://github.com/Developerproject2024/app-marketplace-ui/commit/318f7b411de0adcc9816c7107a8b0e423de262b9))
+
 ### [0.0.8](https://github.com/Developerproject2024/app-marketplace-ui/compare/v0.0.7...v0.0.8) (2024-08-18)
 
 ### Features
