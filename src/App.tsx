@@ -12,9 +12,9 @@ import LoginContainer from './containers/Login/LoginContainer';
 import AdminContainer from './containers/admin/AdminContainer';
 
 function App() {
-  console.log('entrooo');
+  const apiUrl = 'http://52.15.66.81:3000/api/marketplace';
   const dispatch = useDispatch();
-  makeRequest('http://localhost:3000/api/marketplace/products', 'GET')
+  makeRequest(`${apiUrl}/products`, 'GET')
     .then((item) => {
       dispatch(items(item));
     })

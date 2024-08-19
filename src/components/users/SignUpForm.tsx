@@ -29,6 +29,7 @@ interface ErrorMessage {
 }
 
 const SignUpForm: React.FC<SignUpFormProps> = ({ onClose }) => {
+  const apiUrl = 'http://52.15.66.81:3000/api/marketplace/users';
   const [data, setData] = useState<NewUser | ErrorMessage | IUserRole | undefined | null>(undefined);
   const [errors, setErrors] = useState<NewUser>({ email: '', password_confirmation: '', password_new: '' });
   const [formData, setFormData] = useState({
@@ -81,12 +82,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onClose }) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validateForm()) {
-      makeRequest<NewUser | ErrorMessage | undefined | null>(
-        'http://localhost:3000/api/marketplace/users',
-        'POST',
-        formData,
-        '',
-      )
+      makeRequest<NewUser | ErrorMessage | undefined | null>(`${apiUrl}/users`, 'POST', formData, '')
         .then((user) => {
           console.log('crear', user);
           setData(user); // Asegúrate de que newUser es del tipo IUser o ErrorMessage

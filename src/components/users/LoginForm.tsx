@@ -15,6 +15,7 @@ interface ILoginFormProps {
 }
 
 const LoginForm: React.FC<ILoginFormProps> = ({ onClose }) => {
+  const apiUrl = 'http://52.15.66.81:3000/api/marketplace/auth';
   const [errors, setErrors] = useState<NewUser>({ email: '', password: '' });
   const [formData, setFormData] = useState({
     email: '',
@@ -61,12 +62,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ onClose }) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validateForm()) {
-      makeRequest<NewUser | { access_token: string } | null>(
-        'http://localhost:3000/api/marketplace/auth/authentication',
-        'POST',
-        formData,
-        '',
-      )
+      makeRequest<NewUser | { access_token: string } | null>(`${apiUrl}/authentication`, 'POST', formData, '')
         .then((item) => {
           onClose(false);
           dispatch(token(item));

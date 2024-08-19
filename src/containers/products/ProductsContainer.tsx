@@ -8,7 +8,15 @@ import { useNavigate } from 'react-router-dom';
 import { items } from '../../store/slice/products.Slice';
 import { IProduct } from '../../interfaces';
 
+type FormData = {
+  name: string;
+  sku: string;
+  amount: number;
+  price: number;
+};
+
 const ProductsContainer: React.FC = () => {
+  const apiUrl = 'http://52.15.66.81:3000/api/marketplace';
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const openModal = () => setIsModalOpen(true);
@@ -42,30 +50,30 @@ const ProductsContainer: React.FC = () => {
     // Definir las reglas de validación
     const validationRules = {
       name: {
-        validate: (value: string) => value.trim() !== '',
+        validate1: (value: string) => value.trim() !== '',
         message: 'Nombre es requerido',
       },
       sku: {
-        validate: (value: string) => value.trim() !== '',
+        validate1: (value: string) => value.trim() !== '',
         message: 'SKU es requerido',
       },
       amount: {
-        validate: (value: number) => value > 0,
+        validate1: (value: number) => value > 0,
         message: 'Cantidad debe ser mayor que 0',
       },
       price: {
-        validate: (value: number) => value > 0,
+        validate1: (value: number) => value > 0,
         message: 'Precio debe ser mayor que 0',
       },
     };
 
     // Iterar sobre las reglas de validación
     Object.keys(validationRules).forEach((field) => {
-      const { validate, message } = validationRules[field as keyof typeof validationRules];
-      const value: string | number = formData[field as keyof typeof formData];
+      const validateRule = validationRules[field as keyof typeof validationRules];
+      const value = formData[field as keyof FormData];
 
-      if (!validate(value)) {
-        newErrors[field as keyof typeof newErrors] = message;
+      if (!validateRule.validate1(value as never)) {
+        newErrors[field as keyof FormData] = validateRule.message;
         isValid = false;
       }
     });
@@ -88,7 +96,7 @@ const ProductsContainer: React.FC = () => {
         ...formData,
         userId: 4,
       };
-      makeRequest('http://localhost:3000/api/marketplace/products', 'POST', data, storeToken)
+      makeRequest(`${apiUrl}/products`, 'POST', data, storeToken)
         .then((product) => {
           setIsModalOpen(false);
           dispatch(items(product));
